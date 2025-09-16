@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} | Cookbook{% endblock %}
+{% block content %}
+  <h2>{{ page_title }}</h2>
+  {% for r in recipes %}
+    <div class="card">
+      <h3><a href="{% url 'recipe_detail' r.id %}">{{ r.title }}</a></h3>
+      <p><strong>Timp gătire:</strong> {{ r.cook_time }}</p>
+      <p><strong>Adăugată:</strong> {{ r.date_added_str }}</p>
+      <p><em>Autor:</em> {{ r.owner.username }}</p>
+    </div>
+  {% empty %}
+    <p>Nu există rețete încă.</p>
+  {% endfor %}
+{% endblock %}

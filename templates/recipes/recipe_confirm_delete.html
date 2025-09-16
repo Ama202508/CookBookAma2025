@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Ștergere rețetă | Cookbook{% endblock %}
+{% block content %}
+  <h2>Ștergi rețeta „{{ recipe.title }}”?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Da, șterge</button>
+    <a class="btn" href="{% url 'recipe_detail' recipe.id %}">Nu</a>
+  </form>
+{% endblock %}

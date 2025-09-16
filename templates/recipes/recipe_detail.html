@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ recipe.title }} | Cookbook{% endblock %}
+{% block content %}
+  <article class="card">
+    <h2>{{ recipe.title }}</h2>
+
+    {% if recipe.image %}
+      <p><img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="max-width:480px;height:auto;"></p>
+    {% endif %}
+
+    <p><strong>Timp gătire:</strong> {{ recipe.cook_time }}</p>
+    <p><strong>Adăugată:</strong> {{ recipe.date_added_str }}</p>
+    <p><em>Autor:</em> {{ recipe.owner.username }}</p>
+    <p>{{ recipe.description|linebreaks }}</p>
+  </article>
+
+  {% if user.is_authenticated and user == recipe.owner %}
+    <p>
+      <a class="btn" href="{% url 'recipe_edit' recipe.id %}">Editează</a>
+      <a class="btn btn-danger" href="{% url 'recipe_delete' recipe.id %}">Șterge</a>
+    </p>
+  {% endif %}
+{% endblock %}

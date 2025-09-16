@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | Cookbook{% endblock %}
+{% block content %}
+  <h2>{{ title }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <p>
+      <label for="{{ form.title.id_for_label }}">Titlu</label>
+      {{ form.title }}
+      {{ form.title.errors }}
+    </p>
+    <p>
+      <label for="{{ form.cook_time.id_for_label }}">Timp de gătire</label>
+      {{ form.cook_time }}
+      {{ form.cook_time.errors }}
+    </p>
+    <p>
+      <label for="{{ form.date_added_str.id_for_label }}">Data de adăugare</label>
+      {{ form.date_added_str }}
+      <small>{{ form.date_added_str.help_text }}</small>
+      {{ form.date_added_str.errors }}
+    </p>
+    <p>
+      <label for="{{ form.description.id_for_label }}">Descriere</label>
+      {{ form.description }}
+      {{ form.description.errors }}
+    </p>
+    <button class="btn" type="submit">Salvează</button>
+    <a class="btn" href="{% url 'recipe_list' %}">Renunță</a>
+  </form>
+{% endblock %}
