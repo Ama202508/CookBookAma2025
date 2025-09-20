@@ -1,4 +1,3 @@
-# recipes/utils.py
 from datetime import datetime
 
 _ALLOWED_FORMATS = [

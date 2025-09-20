@@ -1,20 +1,28 @@
-# Django Cookbook (Proiect final)
+# Proiectul final: Aplicatie Django de Retete culinare - "Cookbook"
 
-## Descriere
-O aplicație web dezvoltată cu Django unde utilizatorii pot crea, edita și vizualiza rețete culinare.  
-Proiectul include autentificare utilizatori și operații CRUD pentru rețete.
+## Descriere:
+Aplicatie web dezvoltata cu Django unde utilizatorii pot crea, edita, sterge si vizualiza retete culinare.
+Proiectul include autentificare utilizatori, operatii CRUD, sortare (alfabetica si dupa data) si foloseste SQLite ca baza de date.
 
-## Dezvoltare si rulare
+Functionalitati:
+- Autentificare utilizatori (login/logout);
+- CRUD retete: creare, editare, stergere, detalii;
+- Pagina cu toate retetele, sortate: alfabetica si dupa data crearii;
+- Doar utilizatorii autentificati pot crea, edita sau sterge retete;
+- Relatie one-to-many: fiecare reteta apartine unui utilizator
+
+## Dezvoltare/Instalare si rulare:
 1. Creare mediul virtual:
  .venv\Scripts\activate
 
 2. Instalarea dependentelor:
 pip install -r requirements.txt
 
-3. Creare baza de date:
+3. Aplica migrarile bazei de date:
+python manage.py makemigrations
 python manage.py migrate
 
-4. Creeaza un utilizator administrator:
+4. Creeaza un superuser:
 python manage.py createsuperuser
 
 5. Ruleaza serverul:
@@ -24,7 +32,7 @@ python manage.py runserver
 Acceseaza aplicatia la: Starting development server at http://127.0.0.1:8000/
 
 Pagini incluse:
-/ – listă rețete (alfabetic)
+/ – listă rețete: sortare alfabetica si dupa data creare
 /date/ – listă rețete după dată
 /recipe/add/ – adaugă rețetă
 /recipe/<id>/edit/ – editează rețetă

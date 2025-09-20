@@ -1,23 +1,24 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block title %}{{ recipe.title }} | Cookbook{% endblock %}
+
 {% block content %}
   <article class="card">
-    <h2>{{ recipe.title }}</h2>
-
     {% if recipe.image %}
-      <p><img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="max-width:480px;height:auto;"></p>
+      <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="max-width:100%; border-radius:12px; margin-bottom:15px;">
     {% endif %}
-
+    <h1>{{ recipe.title }}</h1>
     <p><strong>Timp gătire:</strong> {{ recipe.cook_time }}</p>
-    <p><strong>Adăugată:</strong> {{ recipe.date_added_str }}</p>
-    <p><em>Autor:</em> {{ recipe.owner.username }}</p>
-    <p>{{ recipe.description|linebreaks }}</p>
-  </article>
+    <p><strong>Adăugată:</strong> {{ recipe.created_at|date:"Y-m-d H:i" }}</p>
+    <p><em>Autor: {{ recipe.owner.username }}</em></p>
 
-  {% if user.is_authenticated and user == recipe.owner %}
-    <p>
+    <hr>
+    <p style="white-space: pre-line">{{ recipe.description }}</p>
+
+    {% if user.is_authenticated and user == recipe.owner %}
       <a class="btn" href="{% url 'recipe_edit' recipe.id %}">Editează</a>
       <a class="btn btn-danger" href="{% url 'recipe_delete' recipe.id %}">Șterge</a>
-    </p>
-  {% endif %}
+    {% endif %}
+  </article>
 {% endblock %}
+
+

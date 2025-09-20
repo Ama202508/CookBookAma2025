@@ -1,5 +1,4 @@
 # Create your models here.
-# recipes/models.py
 
 from django.conf import settings
 from django.db import models
@@ -24,11 +23,11 @@ class Recipe(models.Model):
 
     image = models.ImageField("Poză", upload_to="recipes/", blank=True, null=True)
 
-    #  sortarea după data creării
+    #  sortarea dupa data creare
     created_at = models.DateTimeField("Creat la", auto_now_add=True)
 
     class Meta:
-        ordering = ['title']  # pagina principală (/) în ordine alfabetică
+        ordering = ['title']  # pagina principala (/) in ordine alfabetica
         verbose_name = "rețetă"
         verbose_name_plural = "rețete"
 

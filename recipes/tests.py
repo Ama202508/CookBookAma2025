@@ -1,7 +1,5 @@
 from django.test import TestCase
 
-# Create your tests here
-
 from datetime import timedelta
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
@@ -22,13 +20,13 @@ class RecipeTests(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertTrue(self.client.login(username='ana', password='parola123'))
 
-    #  Create necesită login
+    #  Create necesita login
     def test_create_requires_login(self):
         resp = self.client.get(reverse('recipe_add'))
         self.assertEqual(resp.status_code, 302)
         self.assertIn(reverse('login'), resp.url)
 
-    # Create rețetă reușit
+    # Create reteta reusit
     def test_create_recipe_success(self):
         self.client.login(username='ana', password='parola123')
         data = {
@@ -62,7 +60,7 @@ class RecipeTests(TestCase):
             r.refresh_from_db()
         return r
 
-    # Sortare alfabetică pe pagina principală
+    # Sortare alfabetica pe pagina principala
     def test_sorting_alphabetical(self):
         self._mk_recipe(self.user1, 'Banana')
         self._mk_recipe(self.user1, 'Apple')
@@ -72,7 +70,7 @@ class RecipeTests(TestCase):
         titles = [r.title for r in resp.context['recipes']]
         self.assertEqual(titles, ['Apple', 'Banana', 'Carrot'])
 
-    # Sortare după dată descrescătore
+    # Sortare dupa data descrescatore
     def test_sorting_by_creation_date(self):
         now = timezone.now()
         self._mk_recipe(self.user1, 'r1', created_at=now - timedelta(days=2))
@@ -89,7 +87,7 @@ class RecipeTests(TestCase):
         resp = self.client.get(reverse('recipe_edit', args=[r.id]))
         self.assertEqual(resp.status_code, 403)
 
-    # Validarea câmpului date_added_str
+    # Validarea campului date_added_str
     def test_date_added_str_required(self):
 
         self.client.login(username='ana', password='parola123')
@@ -103,5 +101,3 @@ class RecipeTests(TestCase):
         self.assertEqual(resp.status_code, 200)
 
         self.assertContains(resp, 'Acest câmp este obligatoriu.')
-
-
