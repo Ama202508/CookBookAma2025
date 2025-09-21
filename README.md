@@ -45,12 +45,13 @@ Pagini incluse:
 Teste:
 Proiectul include teste unitare scrise cu framework-ul de testare Django. 
 Acestea verifică:
-- funcționarea autentificării (login și acces la pagini),
-- restricționarea accesului la crearea rețetelor pentru utilizatori neautentificați,
-- crearea corectă a unei rețete și asocierea cu utilizatorul proprietar,
-- sortarea rețetelor alfabetic și după data de creare,
-- permisiunile: doar proprietarul poate edita o rețetă,
-- validarea câmpului date_added_str (obligatoriu).
+- pagina de login se incarca si login-ul functioneaza;
+- crearea retetei necesita autentificare;
+- crearea retetei cand esti logat;
+- sortare alfabetica;
+- sortare dupa data;
+- doar autorul poate edita;
+- validarea campului date_added_str;
 
 Pentru a rula testele: python manage.py test
 
