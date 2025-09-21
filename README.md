@@ -44,7 +44,7 @@ Pagini incluse:
 
 Teste:
 Proiectul include teste unitare scrise cu framework-ul de testare Django. 
-Acestea verifică:
+Acestea verifica:
 - pagina de login se incarca si login-ul functioneaza;
 - crearea retetei necesita autentificare;
 - crearea retetei cand esti logat;
